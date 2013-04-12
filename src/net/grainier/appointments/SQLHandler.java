@@ -14,17 +14,12 @@ public class SQLHandler {
 
 	// We never going to change these
 	public static final String KEY_ROWID = "_id";
-	public static final String KEY_NAME = "user_name";
-	public static final String KEY_AGE = "user_age";
-	public static final String KEY_GENDER = "user_gender";
-	public static final String KEY_TYPE = "user_type";
-	public static final String KEY_RATING = "user_rating";
-
-	// Database Name
-	private static final String DATABASE_NAME = "UserDB";
-
-	// Table Name
-	private static final String DATABASE_TABLE = "userTable";
+	public static final String KEY_TITLE = "_name";
+	public static final String KEY_DATE = "_date";
+	public static final String KEY_TIME = "_time";
+	public static final String KEY_DETAILS = "_details";
+	private static final String DATABASE_NAME = "appointmentsDB";
+	private static final String DATABASE_TABLE = "appointmentsTable";
 
 	// Database Version
 	private static final int DATABASE_VERSION = 1;
@@ -46,10 +41,9 @@ public class SQLHandler {
 			 * This method will only use when the first time we create database
 			 */
 			db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" + KEY_ROWID
-					+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_NAME
-					+ " TEXT NOT NULL, " + KEY_AGE + " INTEGER, " + KEY_GENDER
-					+ " TEXT NOT NULL, " + KEY_TYPE + " TEXT NOT NULL, "
-					+ KEY_RATING + " REAL);");
+					+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_TITLE
+					+ " TEXT NOT NULL, " + KEY_DATE + " INTEGER, " + KEY_TIME
+					+ " TEXT NOT NULL, " + KEY_DETAILS + " TEXT NOT NULL);");
 
 		}
 
@@ -85,11 +79,10 @@ public class SQLHandler {
 
 		ContentValues values = new ContentValues();
 
-		values.put(KEY_NAME, name);
-		values.put(KEY_AGE, age);
-		values.put(KEY_GENDER, gender);
-		values.put(KEY_TYPE, type);
-		values.put(KEY_RATING, rating);
+		values.put(KEY_TITLE, name);
+		values.put(KEY_DATE, age);
+		values.put(KEY_TIME, gender);
+		values.put(KEY_DETAILS, type);
 
 		return sqLiteDatabase.insert(DATABASE_TABLE, null, values);
 
@@ -97,7 +90,7 @@ public class SQLHandler {
 
 	public ArrayList<String> getUserList() {
 		// column list
-		String[] columns = new String[] { KEY_ROWID, KEY_NAME };
+		String[] columns = new String[] { KEY_ROWID, KEY_TITLE };
 
 		// userList to be returned
 		ArrayList<String> userList = new ArrayList<String>();
@@ -108,10 +101,10 @@ public class SQLHandler {
 		// User result = new User();
 
 		// int iRow = c.getColumnIndex(KEY_ROWID);
-		int iName = c.getColumnIndex(KEY_NAME);
-		// int iAge = c.getColumnIndex(KEY_AGE);
-		// int iGender = c.getColumnIndex(KEY_GENDER);
-		// int iType = c.getColumnIndex(KEY_TYPE);
+		int iName = c.getColumnIndex(KEY_TITLE);
+		// int iAge = c.getColumnIndex(KEY_DATE);
+		// int iGender = c.getColumnIndex(KEY_TIME);
+		// int iType = c.getColumnIndex(KEY_DETAILS);
 		// int iRating = c.getColumnIndex(KEY_RATING);
 
 		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
@@ -124,25 +117,22 @@ public class SQLHandler {
 	public Appointment selectByName(String name) {
 		
 		Appointment result = new Appointment();
+		
+		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_DATE, KEY_TIME, KEY_DETAILS }; // column list
 
-		// column list
-		String[] columns = new String[] { KEY_ROWID, KEY_NAME, KEY_AGE,
-				KEY_GENDER, KEY_TYPE, KEY_RATING };
-
-		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_NAME + "='" + name + "'", null, null, null, null);
+		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE + "='" + name + "'", null, null, null, null);
 
 		if (c != null) {
 			c.moveToFirst();
-
-			int iName = c.getColumnIndex(KEY_NAME);
-			int iAge = c.getColumnIndex(KEY_AGE);
-			int iGender = c.getColumnIndex(KEY_GENDER);
-			int iType = c.getColumnIndex(KEY_TYPE);
-			int iRating = c.getColumnIndex(KEY_RATING);
-						
-			result.setTitle(c.getString(iName));
-			result.setTime(c.getString(iAge));
-			result.setDetails(c.getString(iGender));
+			int index_id = c.getColumnIndex(KEY_ROWID);			
+			int index_title = c.getColumnIndex(KEY_TITLE);
+			int index_date = c.getColumnIndex(KEY_DATE);
+			int index_time = c.getColumnIndex(KEY_TIME);
+			int index_details = c.getColumnIndex(KEY_DETAILS);
+			
+			result.setTitle(c.getString(index_title));
+			result.setTime(c.getString(index_time));
+			result.setDetails(c.getString(index_details));
 			return result;
 		}
 		return null;
