@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbarStyle="outsideOverlay"
+    android:scrollbars="vertical"
+    tools:context=".CreateAppointment" >
+
+    <LinearLayout
+        android:id="@+id/CreateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/createTitle"
+        android:layout_below="@+id/createTitle"
+        android:layout_marginTop="38dp" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_Time"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etCreateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_toRightOf="@+id/textView2"
+            android:ems="10"
+            android:hint="Appointment time"
+            android:inputType="time"
+            android:maxLines="1"
+            android:width="225dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CreateDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/CreateTime"
+        android:layout_below="@+id/CreateTime"
+        android:layout_marginTop="39dp" >
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_details"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etCreateDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:ems="10"
+            android:gravity="top|center_vertical"
+            android:hint="Appointment details"
+            android:inputType="textMultiLine"
+            android:scrollHorizontally="false"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:width="225dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/createTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_title"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etCreateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView1"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_toRightOf="@+id/textView3"
+            android:ems="10"
+            android:hint="Appointment title"
+            android:maxLines="1"
+            android:width="225dp" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCreateSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/CreateDetails"
+        android:layout_below="@+id/CreateDetails"
+        android:layout_marginTop="57dp"
+        android:text="@string/btn_save" />
+
+</RelativeLayout>

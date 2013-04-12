@@ -16,6 +16,11 @@
         <activity
             android:name="net.grainier.appointments.MenuActivity"
             android:label="@string/app_name" >
+           
+        </activity>
+        <activity
+            android:name="net.grainier.appointments.CreateAppointment"
+            android:label="@string/title_activity_create_appointment" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
