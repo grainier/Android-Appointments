@@ -37,12 +37,14 @@ public final class R {
         public static final int tvCreateTitle=0x7f080007;
     }
     public static final class layout {
-        public static final int activity_create_appointment=0x7f030000;
-        public static final int activity_menu=0x7f030001;
+        public static final int activity_appointments_list=0x7f030000;
+        public static final int activity_create_appointment=0x7f030001;
+        public static final int activity_menu=0x7f030002;
     }
     public static final class menu {
-        public static final int create_appointment=0x7f070000;
-        public static final int menu=0x7f070001;
+        public static final int appointments_list=0x7f070000;
+        public static final int create_appointment=0x7f070001;
+        public static final int menu=0x7f070002;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -52,6 +54,7 @@ public final class R {
         public static final int lbl_Time=0x7f050006;
         public static final int lbl_details=0x7f050007;
         public static final int lbl_title=0x7f050005;
+        public static final int title_activity_appointments_list=0x7f050008;
         public static final int title_activity_create_appointment=0x7f050003;
     }
     public static final class style {

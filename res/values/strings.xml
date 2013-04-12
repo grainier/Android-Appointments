@@ -9,5 +9,6 @@
     <string name="lbl_title">Title</string>
     <string name="lbl_Time">Time</string>
     <string name="lbl_details">Details</string>
+    <string name="title_activity_appointments_list">AppointmentsListActivity</string>
 
 </resources>
