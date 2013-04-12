@@ -114,13 +114,13 @@ public class SQLHandler {
 		return userList;
 	}
 
-	public Appointment selectByName(String name) {
+	public Appointment searchByTitle(String title) {
 		
 		Appointment result = new Appointment();
 		
 		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_DATE, KEY_TIME, KEY_DETAILS }; // column list
 
-		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE + "='" + name + "'", null, null, null, null);
+		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE + "LIKE '%" + title + "%'", null, null, null, null); // query
 
 		if (c != null) {
 			c.moveToFirst();
@@ -130,7 +130,9 @@ public class SQLHandler {
 			int index_time = c.getColumnIndex(KEY_TIME);
 			int index_details = c.getColumnIndex(KEY_DETAILS);
 			
+			result.setId(c.getInt(index_id));
 			result.setTitle(c.getString(index_title));
+			result.setDate(c.getString(index_date));
 			result.setTime(c.getString(index_time));
 			result.setDetails(c.getString(index_details));
 			return result;
