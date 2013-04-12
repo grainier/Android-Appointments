@@ -19,7 +19,7 @@
            
         </activity>
         <activity
-            android:name="net.grainier.appointments.CreateAppointment"
+            android:name="net.grainier.appointments.CreateActivity"
             android:label="@string/title_activity_create_appointment" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

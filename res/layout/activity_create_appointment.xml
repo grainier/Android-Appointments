@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:scrollbarStyle="outsideOverlay"
     android:scrollbars="vertical"
-    tools:context=".CreateAppointment" >
+    tools:context=".CreateActivity" >
 
     <LinearLayout
         android:id="@+id/CreateTime"
@@ -19,7 +19,7 @@
         android:layout_marginTop="38dp" >
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvCreateTime"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/lbl_Time"
@@ -29,9 +29,9 @@
             android:id="@+id/etCreateTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView2"
-            android:layout_alignBottom="@+id/textView2"
-            android:layout_toRightOf="@+id/textView2"
+            android:layout_alignBaseline="@+id/tvCreateTime"
+            android:layout_alignBottom="@+id/tvCreateTime"
+            android:layout_toRightOf="@+id/tvCreateTime"
             android:ems="10"
             android:hint="Appointment time"
             android:inputType="time"
@@ -49,7 +49,7 @@
         android:layout_marginTop="39dp" >
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tvCreateDetails"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/lbl_details"
@@ -80,7 +80,7 @@
         android:layout_marginTop="35dp" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tvCreateTitle"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/lbl_title"
@@ -90,9 +90,9 @@
             android:id="@+id/etCreateTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView1"
-            android:layout_alignBottom="@+id/textView1"
-            android:layout_toRightOf="@+id/textView3"
+            android:layout_alignBaseline="@+id/tvCreateTitle"
+            android:layout_alignBottom="@+id/tvCreateTitle"
+            android:layout_toRightOf="@+id/tvCreateDetails"
             android:ems="10"
             android:hint="Appointment title"
             android:maxLines="1"
