@@ -121,9 +121,9 @@ public class SQLHandler {
 		return userList;
 	}
 
-	// change object type
-	/*public User selectByName(String name) {
-		User result = new User();
+	public Appointment selectByName(String name) {
+		
+		Appointment result = new Appointment();
 
 		// column list
 		String[] columns = new String[] { KEY_ROWID, KEY_NAME, KEY_AGE,
@@ -140,14 +140,11 @@ public class SQLHandler {
 			int iType = c.getColumnIndex(KEY_TYPE);
 			int iRating = c.getColumnIndex(KEY_RATING);
 						
-			result.setName(c.getString(iName));
-			result.setAge(c.getInt(iAge));
-			result.setGender(c.getString(iGender));
-			result.setType(c.getString(iType));
-			result.setRating(c.getFloat(iRating));
-
+			result.setTitle(c.getString(iName));
+			result.setTime(c.getString(iAge));
+			result.setDetails(c.getString(iGender));
 			return result;
 		}
 		return null;
-	}*/
+	}
 }
