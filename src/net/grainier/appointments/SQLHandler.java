@@ -11,8 +11,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLHandler {
-
-	// We never going to change these
+	// Initialize static variables
 	public static final String KEY_ROWID = "_id";
 	public static final String KEY_TITLE = "_name";
 	public static final String KEY_DATE = "_date";
@@ -20,31 +19,23 @@ public class SQLHandler {
 	public static final String KEY_DETAILS = "_details";
 	private static final String DATABASE_NAME = "appointmentsDB";
 	private static final String DATABASE_TABLE = "appointmentsTable";
-
-	// Database Version
-	private static final int DATABASE_VERSION = 1;
-
+	private static final int DATABASE_VERSION = 1; // DB version
 	private DbHelper dbHelper;
 	private final Context context;
 	private SQLiteDatabase sqLiteDatabase;
 
-	private static class DbHelper extends SQLiteOpenHelper {
-
+	private class DbHelper extends SQLiteOpenHelper {
 		public DbHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
 		}
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			/*
-			 * This method will only use when the first time we create database
-			 */
+			// This method will only use when the first time we create database
 			db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" + KEY_ROWID
 					+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_TITLE
 					+ " TEXT NOT NULL, " + KEY_DATE + " INTEGER, " + KEY_TIME
 					+ " TEXT NOT NULL, " + KEY_DETAILS + " TEXT NOT NULL);");
-
 		}
 
 		@Override
@@ -52,21 +43,18 @@ public class SQLHandler {
 			db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
 			onCreate(db);
 		}
-
 	}
 
+	/**
+	 * Constructor for SQLHandler
+	 */
 	public SQLHandler(Context c) {
 		this.context = c;
 	}
 
 	public SQLHandler open() throws SQLException {
 		dbHelper = new DbHelper(context);
-
 		sqLiteDatabase = dbHelper.getWritableDatabase();
-
-		// dbHelper.onUpgrade(sqLiteDatabase, DATABASE_VERSION,
-		// DATABASE_VERSION);
-
 		return this;
 	}
 
@@ -76,16 +64,12 @@ public class SQLHandler {
 
 	public long createEntry(String name, int age, String gender, String type,
 			float rating) {
-
 		ContentValues values = new ContentValues();
-
 		values.put(KEY_TITLE, name);
 		values.put(KEY_DATE, age);
 		values.put(KEY_TIME, gender);
 		values.put(KEY_DETAILS, type);
-
 		return sqLiteDatabase.insert(DATABASE_TABLE, null, values);
-
 	}
 
 	public ArrayList<String> getUserList() {
@@ -114,29 +98,63 @@ public class SQLHandler {
 		return userList;
 	}
 
-	public Appointment searchByTitle(String title) {
-		
+	public ArrayList<Appointment> searchByTitle(String title) {
+		ArrayList<Appointment> appointments = new ArrayList<Appointment>();
 		Appointment result = new Appointment();
+		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_DATE,
+				KEY_TIME, KEY_DETAILS }; // column list
+		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE
+				+ "LIKE '%" + title + "%'", null, null, null, null); // query
 		
-		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_DATE, KEY_TIME, KEY_DETAILS }; // column list
-
-		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE + "LIKE '%" + title + "%'", null, null, null, null); // query
-
 		if (c != null) {
-			c.moveToFirst();
-			int index_id = c.getColumnIndex(KEY_ROWID);			
+			int index_id = c.getColumnIndex(KEY_ROWID);
 			int index_title = c.getColumnIndex(KEY_TITLE);
 			int index_date = c.getColumnIndex(KEY_DATE);
 			int index_time = c.getColumnIndex(KEY_TIME);
 			int index_details = c.getColumnIndex(KEY_DETAILS);
 			
-			result.setId(c.getInt(index_id));
-			result.setTitle(c.getString(index_title));
-			result.setDate(c.getString(index_date));
-			result.setTime(c.getString(index_time));
-			result.setDetails(c.getString(index_details));
-			return result;
-		}
-		return null;
+			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+				result.setId(c.getInt(index_id));
+				result.setTitle(c.getString(index_title));
+				result.setDate(c.getString(index_date));
+				result.setTime(c.getString(index_time));
+				result.setDetails(c.getString(index_details));
+				appointments.add(result);
+			}
+			return appointments;
+		} else
+			return null;
+	}
+
+	public ArrayList<Appointment> searchByDate(String date) {
+
+		ArrayList<Appointment> appointments = new ArrayList<Appointment>();
+
+		Appointment result = new Appointment();
+
+		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_DATE,
+				KEY_TIME, KEY_DETAILS }; // column list
+
+		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_DATE
+				+ "LIKE '%" + date + "%'", null, null, null, null); // query
+
+		if (c != null) {
+			int index_id = c.getColumnIndex(KEY_ROWID);
+			int index_title = c.getColumnIndex(KEY_TITLE);
+			int index_date = c.getColumnIndex(KEY_DATE);
+			int index_time = c.getColumnIndex(KEY_TIME);
+			int index_details = c.getColumnIndex(KEY_DETAILS);
+
+			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+				result.setId(c.getInt(index_id));
+				result.setTitle(c.getString(index_title));
+				result.setDate(c.getString(index_date));
+				result.setTime(c.getString(index_time));
+				result.setDetails(c.getString(index_details));
+				appointments.add(result);
+			}
+			return appointments;
+		} else
+			return null;
 	}
 }
