@@ -1,13 +1,12 @@
 package net.grainier.appointments;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLHandler {
@@ -33,8 +32,8 @@ public class SQLHandler {
 			// This method will only use when the first time we create database
 			db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" + KEY_ROWID
 					+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_TITLE
-					+ " TEXT NOT NULL, " + KEY_TIME
-					+ " TEXT NOT NULL, " + KEY_DETAILS + " TEXT NOT NULL);");
+					+ " TEXT NOT NULL, " + KEY_TIME + " INTEGER, "
+					+ KEY_DETAILS + " TEXT NOT NULL);");
 		}
 
 		@Override
@@ -44,14 +43,11 @@ public class SQLHandler {
 		}
 	}
 
-	/**
-	 * Constructor for SQLHandler
-	 */
 	public SQLHandler(Context c) {
 		this.context = c;
 	}
 
-	public SQLHandler open() throws SQLException {
+	public SQLHandler open() throws SQLiteException {
 		dbHelper = new DbHelper(context);
 		sqLiteDatabase = dbHelper.getWritableDatabase();
 		return this;
@@ -61,54 +57,27 @@ public class SQLHandler {
 		dbHelper.close();
 	}
 
-	public long createEntry(String name, int age, String gender, String type,
-			float rating) {
+	public long addAppointment(Appointment a) {
 		ContentValues values = new ContentValues();
-		values.put(KEY_TITLE, name);
-		values.put(KEY_TIME, gender);
-		values.put(KEY_DETAILS, type);
+		values.put(KEY_TITLE, a.getTitle());
+		values.put(KEY_TIME, a.getTime());
+		values.put(KEY_DETAILS, a.getDetails());
 		return sqLiteDatabase.insert(DATABASE_TABLE, null, values);
-	}
-
-	public ArrayList<String> getUserList() {
-		// column list
-		String[] columns = new String[] { KEY_ROWID, KEY_TITLE };
-
-		// userList to be returned
-		ArrayList<String> userList = new ArrayList<String>();
-
-		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, null, null,
-				null, null, null);
-
-		// User result = new User();
-
-		// int iRow = c.getColumnIndex(KEY_ROWID);
-		int iName = c.getColumnIndex(KEY_TITLE);
-		// int iAge = c.getColumnIndex(KEY_DATE);
-		// int iGender = c.getColumnIndex(KEY_TIME);
-		// int iType = c.getColumnIndex(KEY_DETAILS);
-		// int iRating = c.getColumnIndex(KEY_RATING);
-
-		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-			userList.add(c.getString(iName));
-		}
-
-		return userList;
 	}
 
 	public ArrayList<Appointment> searchByTitle(String title) {
 		ArrayList<Appointment> appointments = new ArrayList<Appointment>();
 		Appointment result = new Appointment();
-		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_TIME, KEY_DETAILS }; // column list
-		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE
-				+ "LIKE '%" + title + "%'", null, null, null, null); // query
-		
+		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_TIME,
+				KEY_DETAILS }; // column list
+		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE + " LIKE ?", new String[]{title+"%"}, null, null, null); // query
+
 		if (c != null) {
 			int index_id = c.getColumnIndex(KEY_ROWID);
 			int index_title = c.getColumnIndex(KEY_TITLE);
 			int index_time = c.getColumnIndex(KEY_TIME);
 			int index_details = c.getColumnIndex(KEY_DETAILS);
-			
+
 			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
 				result.setId(c.getInt(index_id));
 				result.setTitle(c.getString(index_title));
@@ -122,15 +91,11 @@ public class SQLHandler {
 	}
 
 	public ArrayList<Appointment> searchByDate(String date) {
-
 		ArrayList<Appointment> appointments = new ArrayList<Appointment>();
-
-		Appointment result = new Appointment();
-
-		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_TIME, KEY_DETAILS }; // column list
-
-		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TIME
-				+ "LIKE '%" + date + "%'", null, null, null, null); // query
+		
+		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_TIME,
+				KEY_DETAILS }; // column list
+		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TIME + " LIKE ?", new String[]{date+"%"}, null, null, null); // query
 
 		if (c != null) {
 			int index_id = c.getColumnIndex(KEY_ROWID);
@@ -139,6 +104,7 @@ public class SQLHandler {
 			int index_details = c.getColumnIndex(KEY_DETAILS);
 
 			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+				Appointment result = new Appointment();
 				result.setId(c.getInt(index_id));
 				result.setTitle(c.getString(index_title));
 				result.setTime(c.getLong(index_time));

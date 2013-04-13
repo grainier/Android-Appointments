@@ -7,6 +7,10 @@ public class Appointment {
 	private long time;	
 	private String details;
 	
+	@Override
+	public String toString() {
+		return title;
+	}
 	public int getId() {
 		return id;
 	}
