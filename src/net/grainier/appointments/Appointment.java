@@ -4,8 +4,7 @@ public class Appointment {
 	
 	private int id;
 	private String title;
-	private String date;
-	private String time;	
+	private long time;	
 	private String details;
 	
 	public int getId() {
@@ -24,19 +23,11 @@ public class Appointment {
 		this.title = title;
 	}
 	
-	public String getDate() {
-		return date;
-	}
-	
-	public void setDate(String date) {
-		this.date = date;
-	}
-	
-	public String getTime() {
+	public long getTime() {
 		return time;
 	}
 	
-	public void setTime(String time) {
+	public void setTime(long time) {
 		this.time = time;
 	}
 	
