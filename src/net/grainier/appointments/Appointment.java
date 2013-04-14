@@ -9,7 +9,7 @@ public class Appointment {
 	
 	@Override
 	public String toString() {
-		return title;
+		return "Title : " + title + "\nTime : " + String.valueOf(time);
 	}
 	public int getId() {
 		return id;

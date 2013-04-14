@@ -1,42 +1,43 @@
 package net.grainier.appointments;
 
+import net.grainier.appointments.util.AppointmentListAdapter;
+import net.grainier.appointments.util.SQLHandler;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Context;
 import android.database.sqlite.SQLiteException;
-import android.view.Menu;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
-public class AppointmentsListActivity extends Activity {
+public class AppointmentsListActivity extends ListActivity {
 
-	ListView appointmentsList;
+	private ListView appointmentsList;
+	private Context ctx;
 	
-	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_appointments_list);
 		
-		appointmentsList = (ListView) findViewById(R.id.lvAppointmentsList);
+		super.onCreate(savedInstanceState);		
+		setContentView(R.layout.activity_appointments_list);		
+		ctx=this;
+		
+		appointmentsList = (ListView) findViewById(android.R.id.list);
 		
 		SQLHandler SQLite = new SQLHandler(this);
 		
 		try{
 		SQLite.open();
-		ArrayAdapter<Appointment> listAdapter = new ArrayAdapter<Appointment>(this,android.R.layout.simple_list_item_1, SQLite.searchByDate("3333"));
-		appointmentsList.setAdapter(listAdapter);
+		appointmentsList.setAdapter(new AppointmentListAdapter(ctx, R.layout.list_appointment, SQLite.searchByDate("3333")));
 		SQLite.close();
 		} catch (SQLiteException e){
 			
-		}
-		
-		
+		}		
 	}
-
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.appointments_list, menu);
-		return true;
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		Appointment selectedAppointment = (Appointment) l.getAdapter().getItem(position);
+		Toast.makeText(this, selectedAppointment.toString(), Toast.LENGTH_SHORT).show(); 
 	}
-
 }

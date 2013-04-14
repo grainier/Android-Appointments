@@ -24,19 +24,17 @@ public class MenuActivity extends Activity {
 
 		create = (ImageButton) findViewById(R.id.btnMenuCreate);
 		view = (ImageButton) findViewById(R.id.btnMenuView);
-		
-		Calendar nextYear = Calendar.getInstance();
-		nextYear.add(Calendar.YEAR, 1);
-
 		calendar = (CalendarPickerView) findViewById(R.id.cpvCalendar);
-		calendar.init(new Date(), new Date(), nextYear.getTime());
+		
+		initCalendar(calendar);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu, menu);
-		return true;
+	public void initCalendar(CalendarPickerView cpv) {
+		Calendar nextYear = Calendar.getInstance();
+		nextYear.add(Calendar.YEAR, 1);		
+		Calendar lastYear = Calendar.getInstance();
+		lastYear.add(Calendar.MONTH, -1);
+		cpv.init(new Date(), lastYear.getTime(), nextYear.getTime());
 	}
 
 	public void onClick(View v) {
@@ -44,33 +42,36 @@ public class MenuActivity extends Activity {
 		
 		switch (v.getId()) {
 		case R.id.btnMenuCreate:
-			Intent createActivity = new Intent(this, CreateActivity.class);
-			createActivity.putExtra(CustomDateFormat.SELECTED_DATE, date);
+			Intent createActivity = new Intent(this, AppointmentActivity.class);
+			createActivity.putExtra(AppointmentActivity.SELECTED_DATE, date);
+			createActivity.putExtra(AppointmentActivity.SELECTED_TYPE, 1);
 			startActivity(createActivity);
 			break;
 		case R.id.btnMenuView:
 			Intent viewActivity = new Intent(this, AppointmentsListActivity.class);
-			viewActivity.putExtra(CustomDateFormat.SELECTED_DATE, date);
+			viewActivity.putExtra(AppointmentActivity.SELECTED_DATE, date);
+			viewActivity.putExtra(AppointmentActivity.SELECTED_TYPE, 2);
 			startActivity(viewActivity);
-			break;
-		case R.id.btnMenuDelete:
-			Intent deleteActivity = new Intent(this, AppointmentsListActivity.class);
-			deleteActivity.putExtra(CustomDateFormat.SELECTED_DATE, date);
-			startActivity(deleteActivity);
 			break;
 		case R.id.btnMenuMove:
 			Intent moveActivity = new Intent(this, AppointmentsListActivity.class);
-			moveActivity.putExtra(CustomDateFormat.SELECTED_DATE, date);
+			moveActivity.putExtra(AppointmentActivity.SELECTED_DATE, date);
+			moveActivity.putExtra(AppointmentActivity.SELECTED_TYPE, 3);
 			startActivity(moveActivity);
+			break;
+		case R.id.btnMenuDelete:
+			Intent deleteActivity = new Intent(this, AppointmentsListActivity.class);
+			deleteActivity.putExtra(AppointmentActivity.SELECTED_DATE, date);
+			startActivity(deleteActivity);
 			break;
 		case R.id.btnMenuSearch:
 			Intent searchActivity = new Intent(this, AppointmentsListActivity.class);
-			searchActivity.putExtra(CustomDateFormat.SELECTED_DATE, date);
+			searchActivity.putExtra(AppointmentActivity.SELECTED_DATE, date);
 			startActivity(searchActivity);
 			break;
 		case R.id.btnMenuTranstale:
 			Intent translateActivity = new Intent(this, AppointmentsListActivity.class);
-			translateActivity.putExtra(CustomDateFormat.SELECTED_DATE, date);
+			translateActivity.putExtra(AppointmentActivity.SELECTED_DATE, date);
 			startActivity(translateActivity);
 			break;
 		default:

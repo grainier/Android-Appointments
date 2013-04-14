@@ -39,45 +39,54 @@ public final class R {
         public static final int calendar_text_small=0x7f050004;
     }
     public static final class drawable {
-        public static final int create=0x7f020000;
-        public static final int delete=0x7f020001;
-        public static final int edit=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int move=0x7f020004;
-        public static final int search=0x7f020005;
-        public static final int translate=0x7f020006;
+        public static final int appointment=0x7f020000;
+        public static final int create=0x7f020001;
+        public static final int delete=0x7f020002;
+        public static final int edit=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int move=0x7f020005;
+        public static final int ok=0x7f020006;
+        public static final int save=0x7f020007;
+        public static final int search=0x7f020008;
+        public static final int translate=0x7f020009;
     }
     public static final class id {
-        public static final int CreateDetails=0x7f090005;
-        public static final int CreateTime=0x7f090001;
-        public static final int LinearLayout1=0x7f09000b;
-        public static final int action_settings=0x7f090016;
-        public static final int btnCreateSave=0x7f09000a;
-        public static final int btnMenuCreate=0x7f09000e;
-        public static final int btnMenuDelete=0x7f090010;
-        public static final int btnMenuMove=0x7f090011;
-        public static final int btnMenuSearch=0x7f090012;
-        public static final int btnMenuTranstale=0x7f090013;
-        public static final int btnMenuView=0x7f09000f;
-        public static final int calendar_grid=0x7f090015;
-        public static final int cpvCalendar=0x7f09000c;
-        public static final int createTitle=0x7f090002;
-        public static final int etCreateDetails=0x7f090007;
-        public static final int etCreateTime=0x7f090004;
-        public static final int etCreateTitle=0x7f090009;
-        public static final int lvAppointmentsList=0x7f090000;
-        public static final int menuWrapper=0x7f09000d;
-        public static final int title=0x7f090014;
-        public static final int tvCreateDetails=0x7f090006;
-        public static final int tvCreateTime=0x7f090003;
-        public static final int tvCreateTitle=0x7f090008;
+        public static final int CreateButtons=0x7f09000a;
+        public static final int CreateDetails=0x7f090008;
+        public static final int CreateTime=0x7f090005;
+        public static final int LinearLayout1=0x7f09000d;
+        public static final int action_settings=0x7f09001b;
+        public static final int btnAppointmentCancel=0x7f09000c;
+        public static final int btnAppointmentSave=0x7f09000b;
+        public static final int btnMenuCreate=0x7f090010;
+        public static final int btnMenuDelete=0x7f090012;
+        public static final int btnMenuMove=0x7f090013;
+        public static final int btnMenuSearch=0x7f090014;
+        public static final int btnMenuTranstale=0x7f090015;
+        public static final int btnMenuView=0x7f090011;
+        public static final int calendar_grid=0x7f09001a;
+        public static final int cpvCalendar=0x7f09000e;
+        public static final int createFormWrapper=0x7f090000;
+        public static final int createTitle=0x7f090001;
+        public static final int etCreateDetails=0x7f090009;
+        public static final int etCreateTime=0x7f090007;
+        public static final int etCreateTitle=0x7f090003;
+        public static final int ivAppointmentIcon=0x7f090016;
+        public static final int menuWrapper=0x7f09000f;
+        public static final int title=0x7f090019;
+        public static final int tvCreateDetails=0x7f090004;
+        public static final int tvCreateTime=0x7f090006;
+        public static final int tvCreateTitle=0x7f090002;
+        public static final int tvItemTime=0x7f090018;
+        public static final int tvItemTitle=0x7f090017;
     }
     public static final class layout {
         public static final int activity_appointments_list=0x7f030000;
         public static final int activity_create_appointment=0x7f030001;
         public static final int activity_menu=0x7f030002;
-        public static final int month=0x7f030003;
-        public static final int week=0x7f030004;
+        public static final int list_appointment=0x7f030003;
+        public static final int month=0x7f030004;
+        public static final int week=0x7f030005;
     }
     public static final class menu {
         public static final int appointments_list=0x7f080000;

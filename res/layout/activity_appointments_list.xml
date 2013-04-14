@@ -9,11 +9,13 @@
     tools:context=".AppointmentsListActivity" >
 
     <ListView
-        android:id="@+id/lvAppointmentsList"
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10.0sp" >
     </ListView>
 
 </RelativeLayout>

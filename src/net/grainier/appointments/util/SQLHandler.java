@@ -1,6 +1,8 @@
-package net.grainier.appointments;
+package net.grainier.appointments.util;
 
 import java.util.ArrayList;
+
+import net.grainier.appointments.Appointment;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -95,7 +97,7 @@ public class SQLHandler {
 		
 		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_TIME,
 				KEY_DETAILS }; // column list
-		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TIME + " LIKE ?", new String[]{date+"%"}, null, null, null); // query
+		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, null, null, null, null, null); // query
 
 		if (c != null) {
 			int index_id = c.getColumnIndex(KEY_ROWID);
