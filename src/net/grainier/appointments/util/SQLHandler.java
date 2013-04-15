@@ -72,7 +72,7 @@ public class SQLHandler {
 		Appointment result = new Appointment();
 		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_TIME,
 				KEY_DETAILS }; // column list
-		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE + " LIKE ?", new String[]{title+"%"}, null, null, null); // query
+		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE + " LIKE ?", new String[]{"%"+title+"%"}, null, null, null); // query
 
 		if (c != null) {
 			int index_id = c.getColumnIndex(KEY_ROWID);

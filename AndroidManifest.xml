@@ -24,11 +24,15 @@
         </activity>
         <activity
             android:name="net.grainier.appointments.AppointmentActivity"
-            android:label="@string/title_activity_create_appointment" >            
+            android:label="@string/title_activity_create_appointment" >
         </activity>
         <activity
             android:name="net.grainier.appointments.AppointmentsListActivity"
             android:label="@string/title_activity_appointments_list" >
+        </activity>
+        <activity
+            android:name="net.grainier.appointments.SearchActivity"
+            android:label="@string/title_activity_search" >
         </activity>
     </application>
 

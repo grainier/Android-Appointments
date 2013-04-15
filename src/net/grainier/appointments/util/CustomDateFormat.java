@@ -5,11 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import android.text.format.DateFormat;
-
 public class CustomDateFormat {
 
-	public static final String DATE_FORMAT = "yyyyMMddHHmmss";
+	public static final String DATE_FORMAT = "yyyyMMddHHmm";
 	public static final SimpleDateFormat dateFormat = new SimpleDateFormat(
 			DATE_FORMAT);
 

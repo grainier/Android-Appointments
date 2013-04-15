@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -36,9 +36,6 @@
                 android:id="@+id/etCreateTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/tvCreateTitle"
-                android:layout_alignBottom="@+id/tvCreateTitle"
-                android:layout_toRightOf="@+id/tvCreateDetails"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Appointment title"
@@ -55,7 +52,7 @@
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
             android:padding="16dp"
-            android:layout_marginTop="25dp" >
+            android:layout_marginTop="15dp" >
 
             <TextView
                 android:id="@+id/tvCreateTime"
@@ -64,18 +61,11 @@
                 android:text="@string/lbl_Time"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <EditText
-                android:id="@+id/etCreateTime"
+            <TimePicker
+                android:id="@+id/tpCreateTime"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/tvCreateTime"
-                android:layout_alignBottom="@+id/tvCreateTime"
-                android:layout_toRightOf="@+id/tvCreateTime"
-                android:ems="10"
-                android:hint="Appointment time"
-                android:inputType="time"
-                android:maxLines="1"
-                android:width="225dp" />
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -84,7 +74,7 @@
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
             android:padding="16dp"
-            android:layout_marginTop="25dp" >
+            android:layout_marginTop="15dp" >
 
             <TextView
                 android:id="@+id/tvCreateDetails"
@@ -96,7 +86,7 @@
             <EditText
                 android:id="@+id/etCreateDetails"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:ems="10"
                 android:gravity="top|center_vertical"
                 android:hint="Appointment details"

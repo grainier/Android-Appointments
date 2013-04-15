@@ -1,7 +1,6 @@
 package net.grainier.appointments.util;
 
 import net.grainier.appointments.R;
-import net.grainier.appointments.R.id;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;

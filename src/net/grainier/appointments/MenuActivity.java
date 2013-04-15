@@ -65,7 +65,7 @@ public class MenuActivity extends Activity {
 			startActivity(deleteActivity);
 			break;
 		case R.id.btnMenuSearch:
-			Intent searchActivity = new Intent(this, AppointmentsListActivity.class);
+			Intent searchActivity = new Intent(this, SearchActivity.class);
 			searchActivity.putExtra(AppointmentActivity.SELECTED_DATE, date);
 			startActivity(searchActivity);
 			break;

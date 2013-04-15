@@ -46,7 +46,7 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
 		txtDetails.setText(appointment.getDetails());
 
 		TextView txtTime = viewCache.getTextTime(resource);
-		txtTime.setText(String.valueOf(appointment.getTime()));
+		txtTime.setText(appointment.getCalendarTime().getTime().toString());
 
 		return convertView;
 	}

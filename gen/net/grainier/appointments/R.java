@@ -52,10 +52,12 @@ public final class R {
     }
     public static final class id {
         public static final int CreateButtons=0x7f09000a;
-        public static final int CreateDetails=0x7f090008;
-        public static final int CreateTime=0x7f090005;
+        public static final int CreateDetails=0x7f090007;
+        public static final int CreateTime=0x7f090004;
         public static final int LinearLayout1=0x7f09000d;
-        public static final int action_settings=0x7f09001c;
+        public static final int SearchAppointments=0x7f090017;
+        public static final int SearchWrapper=0x7f090016;
+        public static final int action_settings=0x7f090020;
         public static final int btnAppointmentCancel=0x7f09000c;
         public static final int btnAppointmentSave=0x7f09000b;
         public static final int btnMenuCreate=0x7f090010;
@@ -64,35 +66,39 @@ public final class R {
         public static final int btnMenuSearch=0x7f090014;
         public static final int btnMenuTranstale=0x7f090015;
         public static final int btnMenuView=0x7f090011;
-        public static final int calendar_grid=0x7f09001b;
+        public static final int btnSearchOk=0x7f090019;
+        public static final int calendar_grid=0x7f09001f;
         public static final int cpvCalendar=0x7f09000e;
         public static final int createFormWrapper=0x7f090000;
         public static final int createTitle=0x7f090001;
         public static final int etCreateDetails=0x7f090009;
-        public static final int etCreateTime=0x7f090007;
         public static final int etCreateTitle=0x7f090003;
-        public static final int ivAppointmentIcon=0x7f090016;
+        public static final int etSearchKey=0x7f090018;
+        public static final int ivAppointmentIcon=0x7f09001a;
         public static final int menuWrapper=0x7f09000f;
-        public static final int title=0x7f09001a;
-        public static final int tvCreateDetails=0x7f090004;
-        public static final int tvCreateTime=0x7f090006;
+        public static final int title=0x7f09001e;
+        public static final int tpCreateTime=0x7f090006;
+        public static final int tvCreateDetails=0x7f090008;
+        public static final int tvCreateTime=0x7f090005;
         public static final int tvCreateTitle=0x7f090002;
-        public static final int tvItemDetails=0x7f090019;
-        public static final int tvItemTime=0x7f090018;
-        public static final int tvItemTitle=0x7f090017;
+        public static final int tvItemDetails=0x7f09001d;
+        public static final int tvItemTime=0x7f09001c;
+        public static final int tvItemTitle=0x7f09001b;
     }
     public static final class layout {
         public static final int activity_appointments_list=0x7f030000;
         public static final int activity_create_appointment=0x7f030001;
         public static final int activity_menu=0x7f030002;
-        public static final int list_appointment=0x7f030003;
-        public static final int month=0x7f030004;
-        public static final int week=0x7f030005;
+        public static final int activity_search=0x7f030003;
+        public static final int list_appointment=0x7f030004;
+        public static final int month=0x7f030005;
+        public static final int week=0x7f030006;
     }
     public static final class menu {
         public static final int appointments_list=0x7f080000;
         public static final int create_appointment=0x7f080001;
         public static final int menu=0x7f080002;
+        public static final int search=0x7f080003;
     }
     public static final class string {
         public static final int action_settings=0x7f060004;
@@ -107,6 +113,7 @@ public final class R {
         public static final int month_name_format=0x7f060002;
         public static final int title_activity_appointments_list=0x7f06000b;
         public static final int title_activity_create_appointment=0x7f060006;
+        public static final int title_activity_search=0x7f06000c;
     }
     public static final class style {
         /** 

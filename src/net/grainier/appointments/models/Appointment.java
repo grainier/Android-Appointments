@@ -1,5 +1,9 @@
 package net.grainier.appointments.models;
 
+import java.util.Calendar;
+
+import net.grainier.appointments.util.CustomDateFormat;
+
 public class Appointment {
 	
 	private int id;
@@ -25,6 +29,10 @@ public class Appointment {
 	
 	public long getTime() {
 		return time;
+	}
+	
+	public Calendar getCalendarTime() {
+		return CustomDateFormat.longAsCalendar(time);
 	}
 	
 	public void setTime(long time) {
