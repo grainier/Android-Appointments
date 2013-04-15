@@ -67,12 +67,11 @@ public class SQLHandler {
 		return sqLiteDatabase.insert(DATABASE_TABLE, null, values);
 	}
 
-	public ArrayList<Appointment> searchByTitle(String title) {
-		ArrayList<Appointment> appointments = new ArrayList<Appointment>();
-		Appointment result = new Appointment();
+	public ArrayList<Appointment> searchByKeyWord(String keyWord) {
+		ArrayList<Appointment> appointments = new ArrayList<Appointment>();		
 		String[] columns = new String[] { KEY_ROWID, KEY_TITLE, KEY_TIME,
 				KEY_DETAILS }; // column list
-		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE + " LIKE ?", new String[]{"%"+title+"%"}, null, null, null); // query
+		Cursor c = sqLiteDatabase.query(DATABASE_TABLE, columns, KEY_TITLE + " LIKE ? OR " + KEY_DETAILS + " LIKE ?", new String[]{"%"+keyWord+"%", "%"+keyWord+"%"}, null, null, null); // query
 
 		if (c != null) {
 			int index_id = c.getColumnIndex(KEY_ROWID);
@@ -81,6 +80,7 @@ public class SQLHandler {
 			int index_details = c.getColumnIndex(KEY_DETAILS);
 
 			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+				Appointment result = new Appointment();
 				result.setId(c.getInt(index_id));
 				result.setTitle(c.getString(index_title));
 				result.setTime(c.getLong(index_time));

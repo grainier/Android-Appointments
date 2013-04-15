@@ -29,7 +29,7 @@ public class AppointmentsListActivity extends ListActivity {
 		
 		try{
 		SQLite.open();
-		appointmentsList.setAdapter(new AppointmentListAdapter(ctx, R.layout.list_appointment, SQLite.searchByDate("3333")));
+		appointmentsList.setAdapter(new AppointmentListAdapter(ctx, R.layout.appointment_row, SQLite.searchByDate("3333")));
 		SQLite.close();
 		} catch (SQLiteException e){
 			

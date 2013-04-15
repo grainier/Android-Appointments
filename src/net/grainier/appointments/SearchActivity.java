@@ -33,7 +33,7 @@ public class SearchActivity extends Activity {
 			try {
 				SQLite.open();
 				resultAppointments.setAdapter(new AppointmentListAdapter(ctx,
-						R.layout.list_appointment, SQLite.searchByTitle(searchKey.getText().toString())));
+						R.layout.appointment_row, SQLite.searchByKeyWord(searchKey.getText().toString())));
 				SQLite.close();
 			} catch (SQLiteException e) {
 

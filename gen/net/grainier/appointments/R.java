@@ -90,7 +90,7 @@ public final class R {
         public static final int activity_create_appointment=0x7f030001;
         public static final int activity_menu=0x7f030002;
         public static final int activity_search=0x7f030003;
-        public static final int list_appointment=0x7f030004;
+        public static final int appointment_row=0x7f030004;
         public static final int month=0x7f030005;
         public static final int week=0x7f030006;
     }
