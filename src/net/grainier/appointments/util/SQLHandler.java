@@ -2,7 +2,7 @@ package net.grainier.appointments.util;
 
 import java.util.ArrayList;
 
-import net.grainier.appointments.Appointment;
+import net.grainier.appointments.models.Appointment;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -2,7 +2,7 @@ package net.grainier.appointments.util;
 
 import java.util.ArrayList;
 
-import net.grainier.appointments.Appointment;
+import net.grainier.appointments.models.Appointment;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +41,9 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
 
 		TextView txtTitle = viewCache.getTextTitle(resource);
 		txtTitle.setText(appointment.getTitle());
+		
+		TextView txtDetails = viewCache.getTextDetails(resource);
+		txtDetails.setText(appointment.getDetails());
 
 		TextView txtTime = viewCache.getTextTime(resource);
 		txtTime.setText(String.valueOf(appointment.getTime()));

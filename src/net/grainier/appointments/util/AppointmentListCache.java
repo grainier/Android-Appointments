@@ -11,6 +11,7 @@ public class AppointmentListCache {
 	private View baseView;
 	private TextView textTitle;
 	private TextView textTime;
+	private TextView textDetails;
 	private ImageView imageIcon;
 
 	public AppointmentListCache(View baseView) {
@@ -33,6 +34,13 @@ public class AppointmentListCache {
 			textTime = (TextView) baseView.findViewById(R.id.tvItemTime);
 		}
 		return textTime;
+	}
+	
+	public TextView getTextDetails(int resource) {
+		if (textDetails == null) {
+			textDetails = (TextView) baseView.findViewById(R.id.tvItemDetails);
+		}
+		return textDetails;
 	}
 
 	public ImageView getImageView(int resource) {

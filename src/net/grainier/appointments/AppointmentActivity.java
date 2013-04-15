@@ -1,5 +1,6 @@
 package net.grainier.appointments;
 
+import net.grainier.appointments.models.Appointment;
 import net.grainier.appointments.util.CustomDateFormat;
 import net.grainier.appointments.util.SQLHandler;
 import android.os.Bundle;

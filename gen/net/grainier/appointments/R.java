@@ -55,7 +55,7 @@ public final class R {
         public static final int CreateDetails=0x7f090008;
         public static final int CreateTime=0x7f090005;
         public static final int LinearLayout1=0x7f09000d;
-        public static final int action_settings=0x7f09001b;
+        public static final int action_settings=0x7f09001c;
         public static final int btnAppointmentCancel=0x7f09000c;
         public static final int btnAppointmentSave=0x7f09000b;
         public static final int btnMenuCreate=0x7f090010;
@@ -64,7 +64,7 @@ public final class R {
         public static final int btnMenuSearch=0x7f090014;
         public static final int btnMenuTranstale=0x7f090015;
         public static final int btnMenuView=0x7f090011;
-        public static final int calendar_grid=0x7f09001a;
+        public static final int calendar_grid=0x7f09001b;
         public static final int cpvCalendar=0x7f09000e;
         public static final int createFormWrapper=0x7f090000;
         public static final int createTitle=0x7f090001;
@@ -73,10 +73,11 @@ public final class R {
         public static final int etCreateTitle=0x7f090003;
         public static final int ivAppointmentIcon=0x7f090016;
         public static final int menuWrapper=0x7f09000f;
-        public static final int title=0x7f090019;
+        public static final int title=0x7f09001a;
         public static final int tvCreateDetails=0x7f090004;
         public static final int tvCreateTime=0x7f090006;
         public static final int tvCreateTitle=0x7f090002;
+        public static final int tvItemDetails=0x7f090019;
         public static final int tvItemTime=0x7f090018;
         public static final int tvItemTitle=0x7f090017;
     }

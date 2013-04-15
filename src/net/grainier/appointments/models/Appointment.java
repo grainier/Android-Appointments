@@ -1,4 +1,4 @@
-package net.grainier.appointments;
+package net.grainier.appointments.models;
 
 public class Appointment {
 	
