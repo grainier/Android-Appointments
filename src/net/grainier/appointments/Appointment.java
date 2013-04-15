@@ -7,10 +7,6 @@ public class Appointment {
 	private long time;	
 	private String details;
 	
-	@Override
-	public String toString() {
-		return "Title : " + title + "\nTime : " + String.valueOf(time);
-	}
 	public int getId() {
 		return id;
 	}
